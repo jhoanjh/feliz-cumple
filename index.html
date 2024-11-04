@@ -17,14 +17,14 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            align-items: flex-start; /* Cambiado a flex-start para permitir desplazamiento */
+            min-height: 100vh; /* Cambiado a min-height */
+            overflow: auto; /* Permitir desplazamiento */
         }
         .carta {
             width: 70%;
             max-width: 600px;
-            margin: auto;
+            margin: 20px auto; /* Añadir margen vertical */
             padding: 20px;
             border: 5px solid #ff69b4;
             border-radius: 15px;

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        
+        body {
+            font-family: 'Pacifico', cursive;
+            background: url('https://st4.depositphotos.com/18803028/29768/i/450/depositphotos_297680032-stock-photo-deep-space-star-field-universe.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .carta {
+            width: 70%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 5px solid #ff69b4;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .carta h1 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .mensaje {
+            font-size: 1.2em;
+            color: #333;
+            display: none;
+        }
+        .imagen {
+            margin-bottom: 20px;
+        }
+        .imagen img {
+            max-width: 100px;
+            height: auto;
+        }
+        button {
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-family: Arial, sans-serif;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        .audio-container, .video-container {
+            display: none;
+        }
+        audio {
+            display: none; /* Ocultar los controles del audio */
+        }
+        video {
+            width: 100%;
+            height: auto; /* Ajustar el tamaño del video al contenedor */
+            background-color: #000; /* Fondo negro para el video */
+        }
+    </style>
+</head>
+<body>
+    <div class="carta">
+        <div class="imagen">
+            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331211.png" alt="Ícono">
+        </div>
+        <button id="btnAbrirCarta" onclick="abrirCarta()">Abrir Carta</button>
+        <div class="mensaje" id="mensajeCumpleanos">
+            <h1>🎈 ¡Feliz Cumpleaños! 🎈</h1>
+            <p>🎉 ¡Feliz cumpleaños! 🎉 Hoy es el día perfecto para recordarte lo especial que eres y lo afortunado que soy por tenerte. 🌟 Eres una persona increíble, llena de luz y energía. ✨ Que este nuevo año te traiga felicidad, amor y muchos sueños cumplidos. 🎈 Nunca dejes de ser tan única y maravillosa, y sigue brillando con esa alegría que ilumina a todos a tu alrededor. 💖</p>
+            <button id="btnVerVideo" onclick="verVideo()">Ver Video</button>
+        </div>
+        <div class="audio-container" id="audioContainer">
+            <audio id="audio" loop>
+                <source src="https://www.dropbox.com/scl/fi/zvqz3wmzczjh21ey2apk2/TikSave.io_7228737322634808581.mp3?rlkey=ywjeju75hkbz2hms620gpwj7c&dl=1" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        <div class="video-container" id="videoContainer">
+            <video id="video">
+                <source src="https://www.dropbox.com/scl/fi/81eqh7vtmr27m3j7bpwpf/Saludo-de-cumplea-os-de-goku-venado-_-feliz-cumplea-os-480P.mp4?rlkey=bdpyg33iz44jd4mi2djevbmst&raw=1" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const video = document.getElementById('video');
+
+        // Reproducir el audio automáticamente al cargar la página
+        window.onload = function() {
+            audio.play();
+        };
+
+        function abrirCarta() {
+            const mensaje = document.getElementById('mensajeCumpleanos');
+            const boton = document.getElementById('btnAbrirCarta');
+
+            // Ocultar el botón y mostrar el mensaje de cumpleaños
+            boton.style.display = 'none';
+            mensaje.style.display = 'block';
+
+            // Reproducir el audio automáticamente
+            audio.play();
+        }
+
+        function verVideo() {
+            const videoContainer = document.getElementById('videoContainer');
+            
+            // Pausar el audio
+            audio.pause();
+
+            // Mostrar el contenedor de video y reproducir el video
+            videoContainer.style.display = 'block';
+            video.play();
+            
+            // Reproducir música nuevamente cuando el video termine
+            video.onended = function() {
+                audio.currentTime = 0; // Reiniciar la música al inicio
+                audio.play(); // Reproducir la música
+            };
+        }
+    </script>
+</body>
+</html>
